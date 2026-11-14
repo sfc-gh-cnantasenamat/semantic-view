@@ -1,0 +1,63 @@
+semantic_models:
+  - name: order_items
+    model: ref('fct_order_items')
+    defaults:
+      agg_time_dimension: order_date
+    entities:
+      - name: order_item_key
+        type: primary
+      - name: customer_key
+        type: foreign
+      - name: part_key
+        type: foreign
+    dimensions:
+      - name: order_date
+        type: time
+        type_params:
+          time_granularity: day
+    measures:
+      - name: net_revenue
+        agg: sum
+      - name: line_count
+        agg: count
+        expr: order_item_key
+      - name: distinct_parts
+        agg: count_distinct
+        expr: part_key
+
+  - name: customers
+    model: ref('dim_customers')
+    entities:
+      - name: customer_key
+        type: primary
+    dimensions:
+      - name: market_segment
+        type: categorical
+
+  - name: products
+    model: ref('dim_products')
+    entities:
+      - name: part_key
+        type: primary
+    dimensions:
+      - name: brand
+        type: categorical
+
+metrics:
+  - name: total_revenue
+    type: simple
+    type_params:
+      measure: net_revenue
+  - name: item_count
+    type: simple
+    type_params:
+      measure: line_count
+  - name: revenue_per_item
+    type: ratio
+    type_params:
+      numerator: total_revenue
+      denominator: item_count
+  - name: products_sold
+    type: simple
+    type_params:
+      measure: distinct_parts

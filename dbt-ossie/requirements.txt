@@ -1,0 +1,6 @@
+# Minimal set for dbt -> Ossie -> Snowflake semantic views (tested Oct. 16, 2026).
+# dbt-core writes target/osi_document.json during parse; dbt-snowflake is the adapter
+# that parse requires for a snowflake profile, and it builds the tables and runs the publish macro.
+# No Apache Ossie package or converter is needed on this path.
+dbt-core==1.12.6
+dbt-snowflake==1.12.5

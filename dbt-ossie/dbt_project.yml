@@ -1,0 +1,16 @@
+name: dbt_ossie_demo
+version: "1.0.0"
+config-version: 2
+
+profile: dbt_ossie_demo
+
+model-paths: ["models"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  dbt_ossie_demo:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table
