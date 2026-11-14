@@ -4,7 +4,7 @@ Companion projects for building, publishing, and querying Snowflake Semantic Vie
 
 | Folder | What it contains | Guide |
 |---|---|---|
-| [`dbt-ossie/`](dbt-ossie/) | dbt project with staging views, star-schema fact and dimension models (`fct_order_items`, `dim_customers`, `dim_products`), a MetricFlow time spine, a dbt semantic layer specification (`_semantic_models.yml`), and a custom macro (`publish_semantic_view`) that stages the Apache Ossie Open Semantic Interchange document (`target/osi_document.json`) and deploys it as a Snowflake Semantic View over TPC-H sample data | [Getting Started with dbt and Semantic Views using Apache Ossie](https://www.snowflake.com/en/developers/guides/getting-started-with-dbt-and-semantic-views-using-apache-ossie/) |
+| [`dbt-ossie/`](dbt-ossie/) | End-to-end dbt project with staging views, star-schema fact and dimension tables, semantic layer metric and relationship definitions, and a deployment macro that compiles dbt semantic models through Apache Ossie into a governed Snowflake Semantic View over TPC-H sample order data | [Getting Started with dbt and Semantic Views using Apache Ossie](https://www.snowflake.com/en/developers/guides/getting-started-with-dbt-and-semantic-views-using-apache-ossie/) |
 
 ## License
 
